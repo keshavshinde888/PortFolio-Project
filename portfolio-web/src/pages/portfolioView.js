@@ -1,10 +1,10 @@
 import react from 'react'
 import {Route,Router} from 'react-router-dom'
-export const portfolioRegister=()=>{
-       
+import MenuBar from "../components/menuBar"
+export const PortfolioView=()=>{
    return(
     <div>
-      Hi keshav
+     hi keshav
     </div>
    ) 
 }
