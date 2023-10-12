@@ -7,9 +7,9 @@ const MenuBar=()=>{
         <li>
             <Link to="/">Make PortFolio Website</Link>
         </li>
-        <li>
+        {/* <li>
             <Link to="/view">View PortFolio Website</Link>
-        </li>
+        </li> */}
       </ul>
     </div>
    ) 
