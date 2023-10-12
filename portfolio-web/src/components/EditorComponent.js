@@ -19,7 +19,7 @@ const EditorComponent = () => {
           onChange={handleChange}
           theme="snow"
           placeholder="Write something amazing..."
-          className="custom-quill"
+          className="ql-editor custom-quill"
         />
     </Container>
   );

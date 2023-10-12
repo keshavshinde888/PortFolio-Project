@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
-import { PortfolioRegister } from '../pages/portfolioRegister';
+import PortfolioRegister  from '../pages/portfolioRegister';
 import { PortfolioView } from '../pages/portfolioView';
 import MenuBar from './menuBar';
 const Navigation = () => {

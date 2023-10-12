@@ -1,105 +1,81 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import EditorComponent from "../components/EditorComponent";
-// import "./YourStyles.css"; // Import your CSS file for custom styles
+import { TextField, Button } from "@mui/material";
+// import "./PortfolioRegister.css"; // Assuming you have a separate CSS file
 
-export const PortfolioRegister = () => {
-  const data = [
-    {
-      label_name: "PROJECTS WORKED ON",
-    },
-    {
-      label_name: "WORK EXPERIENCE",
-    },
-  ];
+const formFields = [
+  { name: "name", label: "NAME" },
+  { name: "email", label: "EMAIL" },
+  { name: "Mobile_No", label: "MOBILE NO" },
+];
+
+const additionalFields = [
+  "PROJECTS WORKED ON",
+  "WORK EXPERIENCE",
+  "LINKS",
+  "TECHNICAL SKILLS",
+  "EDUCATION QUALIFICATION",
+  "CERTIFICATES",
+  "OTHERS",
+];
+
+const PortfolioRegister = () => {
+  const initialValues = {
+    name: "",
+    email: "",
+    Mobile_No: "",
+  };
+
+  const handleSubmit = (values) => {
+    console.log("Form values:", values);
+    // Handle form submission
+  };
 
   return (
     <div className="formik">
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => {
-          console.log("Form values:", values);
-        }}
-      >
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form className="register-form-container">
-          <div className="input-formName">
-            <label>NAME :</label>
-            <div>
-              <Field
-                type="text"
-                name="name"
-                className="custom-input"
-                placeholder="Enter your name"
-              />
+          {formFields.map((field) => (
+            <div key={field.name} className="input-form">
+              <label>{field.label}:</label>
+              <div>
+                <Field
+                  type="text"
+                  name={field.name}
+                  className="custom-input"
+                  placeholder={`Enter your ${field.label.toLowerCase()}`}
+                />
+              </div>
             </div>
-          </div>
-          <div className="input-formName">
-            <label>EMAIL :</label>
-            <div>
-              <Field
-                type="email"
-                name="email"
-                className="custom-input"
-                placeholder="Enter your email"
-              />
+          ))}
+
+          {additionalFields.map((fieldName) => (
+            <div key={fieldName} className="formName">
+              <label>{fieldName}:</label>
+              <div>
+                <EditorComponent />
+              </div>
             </div>
-          </div>
-          <div className="input-formName">
-            <label>MOBILE NO :</label>
-            <div>
-              <Field
-                type="number"
-                name="Mobile_No"
-                className="custom-input"
-                placeholder="Enter your Mobile Number"
-              />
-            </div>
-            
-          </div>
-          <div className="formName">
-            <label>LINKS :</label>
-            <div>
-              <EditorComponent />
-            </div>
-          </div>
-          <div className="formName">
-            <label>PROJECTS WORKED ON :</label>
-            <div>
-              <EditorComponent />
-            </div>
-          </div>
-          <div className="formName">
-            <label>WORK EXPERIENCE :</label>
-            <div>
-              <EditorComponent />
-            </div>
-          </div>
-          <div className="formName">
-            <label>TECHNICAL SKILLS :</label>
-            <div>
-              <EditorComponent />
-            </div>
-          </div>
-          <div className="formName">
-            <label>EDUCATION QUALIFICATION :</label>
-            <div>
-              <EditorComponent />
-            </div>
-          </div>
-          <div className="formName">
-            <label>CERTIFICATES :</label>
-            <div>
-              <EditorComponent />
-            </div>
-          </div>
-          <div className="formName">
-            <label>OTHERS :</label>
-            <div>
-              <EditorComponent />
-            </div>
+          ))}
+
+          <div className="buttonSubmit">
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              style={{
+                width: "50%",
+                borderRadius: "40px",
+              }}
+            >
+              SUBMIT FORM
+            </Button>
           </div>
         </Form>
       </Formik>
     </div>
   );
 };
+
+export default PortfolioRegister;
