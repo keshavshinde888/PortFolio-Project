@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Formik, Form, Field } from "formik";
 import EditorComponent from "../components/EditorComponent";
 import { TextField, Button } from "@mui/material";
@@ -26,9 +26,20 @@ const PortfolioRegister = () => {
     email: "",
     Mobile_No: "",
   };
+  
+  const [editorData, setEditorData] = useState({});
 
+  const handleEditorChange = (fieldName, data) => {
+    setEditorData((prevData) => ({
+      ...prevData,
+      [fieldName]: data,
+    }));
+  };
   const handleSubmit = (values) => {
-    console.log("Form values:", values);
+    // Combine form data with editor data
+    const formDataWithEditorData = { ...values, ...editorData };
+
+    console.log('Form values with editor data:', formDataWithEditorData);
     // Handle form submission
   };
 
@@ -54,7 +65,7 @@ const PortfolioRegister = () => {
             <div key={fieldName} className="formName">
               <label>{fieldName}:</label>
               <div>
-                <EditorComponent />
+                <EditorComponent onChange={(data) => handleEditorChange(fieldName, data)} />
               </div>
             </div>
           ))}

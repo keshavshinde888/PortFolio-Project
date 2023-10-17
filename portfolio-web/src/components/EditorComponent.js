@@ -4,14 +4,13 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // import Quill styles
 import { Paper,Container } from '@mui/material';
 
-const EditorComponent = () => {
+const EditorComponent = ({ onChange }) => {
   const [text, setText] = useState('');
 
   const handleChange = (value) => {
     setText(value);
-    console.log(value)
+    onChange(value); // Call the parent component's callback function
   };
-
   return (
     <Container>
         <ReactQuill
